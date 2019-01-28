@@ -8,9 +8,19 @@
   <title>Document</title>
 </head>
 <body>
-  <p>WElcome to the char app</p>
+  <p>Welcome to the char app</p>
   
+  <ol id="messages">
+  
+  </ol>
+  
+  <form id="message-form">
+    <input name="message" placeholder="Message" type="text"/>
+    <button>Send</button>
+  </form>
   <script src="./socket.io/socket.io.js"></script>
+  <script
+          src="./libs/jquery.js"></script>
   <script src="./js/index.js"></script>
 </body>
 </html>

@@ -21,10 +21,31 @@ function scrollToBottom() {
 
 socket.on("connect", function() {
   console.log("Connected to server");
+  const params = $.deparam(window.location.search);
+
+  socket.emit("join", params, function(err) {
+    if (err) {
+      alert(err);
+      window.location.href = "/";
+    } else {
+    }
+  });
 });
 
 socket.on("disconnect", function() {
   console.log("Disconnected from server");
+});
+
+socket.on("updateUserList", function(users) {
+  console.log("User list", users);
+
+  const ol = $("<ol></ol>");
+
+  users.forEach(function(user) {
+    ol.append($("<li></li>").text(user));
+  });
+
+  $("#users").html(ol);
 });
 
 socket.on("newMessage", function(message) {
